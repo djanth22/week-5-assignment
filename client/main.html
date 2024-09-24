@@ -1,13 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./main.css" />
     <script src="./app.js" defer></script>
     <title>MAIN/CV ADD DETAILS</title>
-</head>
-<body>
-    
-</body>
+  </head>
+  <body>
+    <header>
+      <h1 class="form-title">CV Template</h1>
+      <button id="hide-show">hide form</button>
+    </header>
+    <div id="form-container">
+      <form id="cv-form">
+        <label for="username" class="label-text">Username</label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          placeholder="Your Username..."
+        />
+        <label for="firstname" class="label-text">First Name</label>
+        <input
+          type="text"
+          id="first-name"
+          name="firstname"
+          placeholder="Your First Name..."
+        />
+        <label for="lastname" class="label-text">Last Name</label>
+        <input
+          type="text"
+          id="last-name"
+          name="lastname"
+          placeholder="Your Last Name..."
+        />
+        <label for="personalsummary" class="label-text">Personal Summary</label>
+        <textarea
+          id="personal-summary"
+          name="personalsummary"
+          placeholder="Please input your Personal Pummary..."
+        >
+        </textarea>
+        <label for="mainsection" class="label-text">Main Section</label>
+        <textarea
+          id="main-section"
+          name="mainsection"
+          placeholder="Please detail your 3 most recent jobs or any relevant experience"
+        >
+        </textarea>
+        <label for="education" class="label-text">Education</label>
+        <textarea
+          id="education"
+          name="education"
+          placeholder="Please detail your relevant Education seperating each award/ acheivement with a star '*' "
+        >
+        </textarea>
+        <label for="socials" class="label-text">Socials</label>
+        <textarea
+          type="text"
+          class="socials"
+          name="socials"
+          placeholder="Please write three socials seperating each social link with a star '*' "
+        >
+        </textarea>
+        <label for="skills" class="label-text">Skills</label>
+        <textarea
+          id="skills"
+          name="skills"
+          placeholder="Please detail your relevant skills seperating each skill with a star '*' "
+        >
+        </textarea>
+        <label for="projects" class="label-text">Projects</label>
+        <textarea
+          id="projects"
+          name="projects"
+          placeholder="If required, please detail your three most recent projects '*' "
+        >
+        </textarea>
+        <button type="submit" id="submit-form">submit data</button>
+      </form>
+    </div>
+  </body>
 </html>
