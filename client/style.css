@@ -30,7 +30,7 @@ h2 {
 }
 
 .container{
-    width: 900px;
+    width: auto;
     background: #fff;
     margin: auto;
     box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.1);
@@ -239,7 +239,7 @@ figure {
 }
 
 @media screen and (max-width: 500px) {
-    .signin.content, .signup-content {
+    .signin-content, .signup-content {
         flex-direction: column;
         justify-content: center;
     }
