@@ -8,7 +8,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 const dbConnectionString = process.env.DATABASE_URL;
-const db = new pg.Pool({
+export const db = new pg.Pool({
   connectionString: dbConnectionString,
 });
 
@@ -19,4 +19,16 @@ app.listen(PORT, () => {
 
 app.get("/", (req, res) => {
   res.json({ message: "this is the root route" });
+});
+
+app.get("/cv", async (req, res) => {
+  const query = await db.query("SELECT * FROM cv");
+  return res.json(query.rows);
+});
+
+app.post("/add", async (req, res) => {
+  const bodyData = await req.body;
+  console.log(bodyData);
+  //input data into database with query
+  res.json({ message: "TESTING POST" });
 });
