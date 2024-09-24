@@ -1,0 +1,19 @@
+body{
+    background-color: azure;
+}
+display-flex, .display-flex, .display-flex-center, .signup-content, .signin.content, .social-login, .socials {
+    display: flex;
+}
+@media screen and (max-width: 500px) {
+    .signin.content, .signup-content {
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+.signin-form{
+    /* margin: 20px; */
+    padding: 120px;
+    /* height: 100px;
+    width: 100px;*/
+    background-color: #9f1717;
+}
