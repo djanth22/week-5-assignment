@@ -1,19 +1,40 @@
 body{
-    background-color: azure;
+    background: #f8f8f8;
+    color:black;
 }
 display-flex, .display-flex, .display-flex-center, .signup-content, .signin.content, .social-login, .socials {
     display: flex;
 }
+
+.container{
+    width: 900px;
+    background: #fff;
+    margin: auto;
+    box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.1);
+    border-radius: 20px;
+}
+
+
+
 @media screen and (max-width: 500px) {
     .signin.content, .signup-content {
         flex-direction: column;
         justify-content: center;
     }
 }
-.signin-form{
-    /* margin: 20px; */
-    padding: 120px;
-    /* height: 100px;
-    width: 100px;*/
-    background-color: #9f1717;
+
+@media screen and (min-width: 1024px) {
+    .container {
+        max-width: 1200px;
+    }
 }
+
+@media screen and (max-width: 1200){
+    .container{
+        width: calc(100% - 30px);
+        max-width: 100%;
+    }
+}
+
+.signup-form, .signup-image, .signin-form, .signin-image {
+    width: auto; }
