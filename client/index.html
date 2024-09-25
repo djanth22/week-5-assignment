@@ -9,66 +9,9 @@
     <a href="./main.html">The Main Page</a>
   </head>
   <body>
-    <div class="loginpage">
-      <label for="username">Username:</label>
-      <input
-        type="text"
-        id="username"
-        name="username"
-        placeholder="Add Your Username"
-      />
-    </div>
-    <div class="loginpage">
-      <label for="password">Password:</label>
-      <input
-        type="password"
-        id="password"
-        name="password"
-        placeholder="Add Your Password"
-      />
-    </div>
-    <div class="btn"><button type="submit">LOG IN</button></div>
 
-    <div class="signup">
-      <label for="fullname">Fullname:</label>
-      <input
-        type="text"
-        id="fullname"
-        name="fullname"
-        placeholder="Add Your Firstname"
-        required
-      />
-    </div>
-    <div class="signup">
-      <label for="lastname">Username</label>
-      <input
-        type="text"
-        id="username"
-        name="username"
-        placeholder="Choose a Username"
-        required
-      />
-    </div>
-    <div class="signup">
-      <label for="password">Password</label>
-      <input
-        type="password"
-        id="password"
-        name="password"
-        placeholder="Unique Password"
-        required
-      />
-    </div>
-    <div class="signup">
-      <label for="confirmpassword">Confirm Password</label>
-      <input
-        type="confirmpassword"
-        id="confirmpassword"
-        name="confirmpassword"
-        placeholder="Confirm Password"
-        required
-      />
-    </div>
-    <div class="btn"><button type="submit">SIGN UP</button></div>
+    <textarea id="text-input" oninput="this.editor.update()" rows="6" cols="60">
+Type **Markdown** here.</textarea>
+
   </body>
 </html>
