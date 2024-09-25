@@ -1,47 +1,34 @@
-
-
-
-const form = document.querySelector("#login-form");
+const loginform = document.querySelector("#login-form");
 async function handleSubmit(event) {
-    event.preventDefault();
-    
-    const formData = new FormData(form);
-    const formValues = Object.fromEntries(formData);
-    console.table(formValues);
+  event.preventDefault();
 
-    const msgRes = await fetch("http://localhost:8080/add", {
-        method: "POST", // This is where we set the POST HTTP verb
-        headers: {
-            "Content-Type": "application/json", // This tells the server we're sending stringified JSON data
-        },
-        body: JSON.stringify({ formValues }),
-    });
-    const msg = await msgRes.json();
+  const formData = new FormData(loginform);
+  const formValues = Object.fromEntries(formData);
+  console.table(formValues);
 
-    const msgCheker = document.querySelector("#login_massage");
-    
-    if(msgCheker === null){
-        const h1 = document.createElement("h1");
-        h1.id = "login_massage";
-        h1.textContent = msg.massage;
-        form.appendChild(h1);
-    }else{
-        msgCheker.textContent =msg.massage;
-    };
+  const msgRes = await fetch("http://localhost:8080/add", {
+    method: "POST", // This is where we set the POST HTTP verb
+    headers: {
+      "Content-Type": "application/json", // This tells the server we're sending stringified JSON data
+    },
+    body: JSON.stringify({ formValues }),
+  });
+  const msg = await msgRes.json();
 
-    form.reset();
+  const msgCheker = document.querySelector("#login_massage");
 
+  if (msgCheker === null) {
+    const h1 = document.createElement("h1");
+    h1.id = "login_massage";
+    h1.textContent = msg.massage;
+    form.appendChild(h1);
+  } else {
+    msgCheker.textContent = msg.massage;
+  }
 
-};
-form.addEventListener("submit", handleSubmit);  
-=======
-// fetch("localhost:8080/add", {
-//   method: "POST",
-//   headers: {
-//     "Content-Type": "application/json",
-//   },
-//   body: JSON.stringify({ formvalues }),
-// });
+  form.reset();
+}
+form.addEventListener("submit", handleSubmit);
 
 const form = document.getElementById(`form-container`);
 const toggle = document.getElementById(`hide-show`);
