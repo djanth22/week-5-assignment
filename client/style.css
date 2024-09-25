@@ -8,7 +8,9 @@ body{
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     color:black;
 }
-
+#login_massage{
+    color: red;
+}
 img {
     max-width: 100%;
     height: auto;
