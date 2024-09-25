@@ -1,3 +1,4 @@
+
 // fetch("localhost:8080/add", {
 //   method: "POST",
 //   headers: {
@@ -22,6 +23,7 @@ new Editor($("text-input"), $("preview"));
 // const markdownTest = document.createElement("p");
 // markdownTest.innerHTML = "Hello *World*!";
 // document.body.appendChild(markdownTest);
+
 
 const form = document.getElementById(`form-container`);
 const toggle = document.getElementById(`hide-show`);

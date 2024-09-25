@@ -1,34 +1,39 @@
 import express from "express";
-import pg from "pg";
 import cors from "cors";
 import dotenv from "dotenv";
+import pg from "pg";
+
+const app = express();
+
+app.use(express.json());
+app.use(cors());
 
 dotenv.config();
-const app = express();
-app.use(cors());
-app.use(express.json());
-const dbConnectionString = process.env.DATABASE_URL;
 export const db = new pg.Pool({
-  connectionString: dbConnectionString,
+  connectionString: process.env.DATABASE_URL,
 });
 
 const PORT = 8080;
-app.listen(PORT, () => {
+app.listen(PORT, function () {
   console.log(`server is running in port ${PORT}`);
 });
 
-app.get("/", (req, res) => {
+app.get("/", function (req, res) {
   res.json({ message: "this is the root route" });
 });
 
-app.get("/cv", async (req, res) => {
-  const query = await db.query("SELECT * FROM cv");
-  return res.json(query.rows);
-});
+app.post("/add", async function (req, res) {
+  const queryResponse = await db.query(
+    "SELECT * FROM sign_in WHERE user_email= $1 AND user_password = $2",
+    [req.body.formValues.your_name, req.body.formValues.your_pass]
+  );
 
-app.post("/add", async (req, res) => {
-  const bodyData = await req.body;
-  console.log(bodyData);
-  //input data into database with query
-  res.json({ message: "TESTING POST" });
+  console.log(queryResponse.rowCount);
+  if (queryResponse.rowCount === 1) {
+    console.log("welcome");
+    res.json({ massage: "Welcome User" });
+  } else {
+    console.log("error");
+    res.json({ massage: "Invalid Login" });
+  }
 });
