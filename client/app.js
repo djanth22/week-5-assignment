@@ -1,5 +1,6 @@
 
 
+
 const form = document.querySelector("#login-form");
 async function handleSubmit(event) {
     event.preventDefault();
@@ -33,3 +34,29 @@ async function handleSubmit(event) {
 
 };
 form.addEventListener("submit", handleSubmit);  
+=======
+// fetch("localhost:8080/add", {
+//   method: "POST",
+//   headers: {
+//     "Content-Type": "application/json",
+//   },
+//   body: JSON.stringify({ formvalues }),
+// });
+
+const form = document.getElementById(`form-container`);
+const toggle = document.getElementById(`hide-show`);
+let display = true;
+
+function reveal() {
+  if (display == true) {
+    form.style.display = "none";
+    display = false;
+    toggle.textContent = "show form";
+  } else {
+    form.style.display = "block";
+    display = true;
+    toggle.textContent = "hide form";
+  }
+}
+
+toggle.addEventListener("click", reveal);
