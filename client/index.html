@@ -2,16 +2,239 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <link rel="stylesheet" href="./main.css" />
     <link rel="stylesheet" href="./style.css" />
-    <script type="module" src="./login.js" defer></script>
+    <script type="module" src="./app.js" defer></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CV Create/LOGIN</title>
-    <a href="./main.html">The Main Page</a>
   </head>
   <body>
+    <div class="main">
+      <!-- Sing in  Form -->
+      <section class="sign-in">
+        <div class="container">
+          <div class="signin-content">
+            <div class="signin-image">
+              <figure>
+                <img src="./public/signin-image.jpg" alt="sign up image" />
+              </figure>
+              <a href="./signup.html" class="signup-image-link"
+                >Create an account</a
+              >
+            </div>
+            <div class="signin-form">
+              <h2 class="form-title">Sign In</h2>
+              <form method="POST" class="register-form" id="login-form">
+                <div class="form-group">
+                  <label for="your_name"></label>
+                  <input
+                    type="text"
+                    name="your_name"
+                    id="your_name"
+                    placeholder="Your Email"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="your_pass"></label>
+                  <input
+                    type="password"
+                    name="your_pass"
+                    id="your_pass"
+                    placeholder="Password"
+                  />
+                </div>
+                <div class="form-group">
+                  <input
+                    type="checkbox"
+                    name="remember-me"
+                    id="remember-me"
+                    class="agree-term"
+                  />
+                  <label for="remember-me" class="label-agree-term"
+                    ><span><span></span></span>Remember me</label
+                  >
+                </div>
+                <div class="form-group form-button">
+                  <input
+                    type="submit"
+                    name="signin"
+                    id="signin"
+                    class="form-submit"
+                    value="Log in"
+                  />
+                </div>
+              </form>
+              <div class="social-login">
+                <span class="social-label">Or login with</span>
+                <ul class="socials">
+                  <a href="#" class="fa fa-facebook"></a>
+                  <a href="#" class="fa fa-twitter"></a>
+                  <a href="#" class="fa fa-google"></a>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <div class="main">
+      <!-- Sign up form -->
+      <section class="signup">
+        <div class="container">
+          <div class="signup-content">
+            <div class="signup-form">
+              <h2 class="form-title">Sign up</h2>
+              <form class="register-form" id="register-form">
+                <div class="form-group">
+                  <label for="name"></label>
+                  <input
+                    type="text"
+                    name="name"
+                    id="name"
+                    placeholder="Your Name"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="email"></label>
+                  <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    placeholder="Your Email"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="pass"></label>
+                  <input
+                    type="password"
+                    name="pass"
+                    id="pass"
+                    placeholder="Password"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="re-pass"></label>
+                  <input
+                    type="password"
+                    name="re_pass"
+                    id="re_pass"
+                    placeholder="Repeat your password"
+                  />
+                </div>
+                <div class="form-group">
+                  <input
+                    type="checkbox"
+                    name="agree-term"
+                    id="agree-term"
+                    class="agree-term"
+                  />
+                  <label for="agree-term" class="label-agree-term"
+                    ><span><span></span></span>I agree all statements in
+                    <a href="#" class="term-service">Terms of service</a></label
+                  >
+                </div>
+                <div class="form-group form-button">
+                  <input
+                    type="submit"
+                    name="signup"
+                    id="signup"
+                    class="form-submit"
+                    value="Register"
+                  />
+                </div>
+              </form>
+            </div>
+            <div class="signup-image">
+              <figure>
+                <img src="./public/signup-image.jpg" alt="sing up image" />
+              </figure>
+              <a href="./signin.html" class="signup-image-link"
+                >I am already member</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <section class="header">
+      <h1 class="form-title">CV Template</h1>
+      <button id="hide-show">hide form</button>
+    </section>
+    <div id="form-container">
+      <form id="cv-form">
+        <label for="username" class="label-text">Username</label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          placeholder="Your Username..."
+        />
+        <label for="firstname" class="label-text">First Name</label>
+        <input
+          type="text"
+          id="first-name"
+          name="firstname"
+          placeholder="Your First Name..."
+        />
+        <label for="lastname" class="label-text">Last Name</label>
+        <input
+          type="text"
+          id="last-name"
+          name="lastname"
+          placeholder="Your Last Name..."
+        />
+        <label for="personalsummary" class="label-text">Personal Summary</label>
+        <textarea
+          id="text-input"
+          oninput="this.editor.update()"
+          name="personalsummary"
+          placeholder="Please input your Personal Pummary..."
+        >
+        </textarea>
+        <div id="preview"></div>
+        <label for="mainsection" class="label-text">Main Section</label>
+        <textarea
+          id="main-section"
+          name="mainsection"
+          placeholder="Please detail your 3 most recent jobs or any relevant experience"
+        >
+        </textarea>
+        <label for="education" class="label-text">Education</label>
+        <textarea
+          id="education"
+          name="education"
+          placeholder="Please detail your relevant Education seperating each award/ acheivement with a star '*' "
+        >
+        </textarea>
+        <label for="socials" class="label-text">Socials</label>
+        <textarea
+          type="text"
+          class="socials"
+          name="socials"
+          placeholder="Please write three socials seperating each social link with a star '*' "
+        >
+        </textarea>
+        <label for="skills" class="label-text">Skills</label>
+        <textarea
+          id="text-input"
+          oninput="this.editor.update()"
+          name="skills"
+          placeholder="Please detail your relevant skills seperating each skill with a star '*' "
+        >
+        </textarea>
 
+        <label for="projects" class="label-text">Projects</label>
+        <textarea
+          id="projects"
+          name="projects"
+          placeholder="If required, please detail your three most recent projects '*' "
+        >
+        </textarea>
+        <button type="submit" id="submit-form">submit data</button>
+      </form>
+    </div>
     <textarea id="text-input" oninput="this.editor.update()" rows="6" cols="60">
-Type **Markdown** here.</textarea>
-
+Type **Markdown** here.</textarea
+    >
   </body>
 </html>
