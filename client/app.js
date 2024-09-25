@@ -94,3 +94,19 @@ function cheatsheet() {
 }
 
 csButton.addEventListener("click", cheatsheet);
+
+const blade = document.querySelector(`.blade`);
+const hilt = document.querySelector(`.hilt`);
+let extendRetract = true;
+
+function saber() {
+  if (extendRetract == true) {
+    blade.style.width = `550px`;
+    extendRetract = false;
+  } else {
+    blade.style.width = `0px`;
+    extendRetract = true;
+  }
+}
+
+hilt.addEventListener("click", saber);
