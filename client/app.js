@@ -76,3 +76,21 @@ async function handleSubmit(event) {
   form.reset();
 }
 form.addEventListener("submit", handleSubmit);
+
+const cs = document.querySelector(`.cheatsheet-content`);
+const csButton = document.querySelector(`.cheatsheet-button`);
+let csdisplay = false;
+
+function cheatsheet() {
+  if (csdisplay == true) {
+    cs.style.display = "none";
+    csdisplay = false;
+    csButton.textContent = "show cheatsheet";
+  } else {
+    cs.style.display = "block";
+    csdisplay = true;
+    csButton.textContent = "hide cheatsheet";
+  }
+}
+
+csButton.addEventListener("click", cheatsheet);
