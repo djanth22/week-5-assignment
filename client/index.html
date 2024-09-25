@@ -9,6 +9,10 @@
     <title>CV Create/LOGIN</title>
   </head>
   <body>
+    <!-- <textarea id="text-input" oninput="this.editor.update()">
+      Type **Markdown** here.</textarea
+    >
+    <div id="preview"></div> -->
     <div class="main">
       <!-- Sing in  Form -->
       <section class="sign-in">
@@ -191,32 +195,38 @@
           placeholder="Please input your Personal Pummary..."
         >
         </textarea>
-        <div id="preview"></div>
+
         <label for="mainsection" class="label-text">Main Section</label>
         <textarea
-          id="main-section"
+          id="text-input1"
+          oninput="this.editor.update()"
           name="mainsection"
           placeholder="Please detail your 3 most recent jobs or any relevant experience"
         >
         </textarea>
+
         <label for="education" class="label-text">Education</label>
         <textarea
-          id="education"
+          id="text-input2"
+          oninput="this.editor.update()"
           name="education"
           placeholder="Please detail your relevant Education seperating each award/ acheivement with a star '*' "
         >
         </textarea>
+
         <label for="socials" class="label-text">Socials</label>
         <textarea
-          type="text"
+          id="text-input3"
+          oninput="this.editor.update()"
           class="socials"
           name="socials"
           placeholder="Please write three socials seperating each social link with a star '*' "
         >
         </textarea>
+
         <label for="skills" class="label-text">Skills</label>
         <textarea
-          id="text-input"
+          id="text-input4"
           oninput="this.editor.update()"
           name="skills"
           placeholder="Please detail your relevant skills seperating each skill with a star '*' "
@@ -225,16 +235,24 @@
 
         <label for="projects" class="label-text">Projects</label>
         <textarea
-          id="projects"
+          id="text-input5"
+          oninput="this.editor.update()"
           name="projects"
           placeholder="If required, please detail your three most recent projects '*' "
         >
         </textarea>
+
         <button type="submit" id="submit-form">submit data</button>
       </form>
     </div>
-    <textarea id="text-input" oninput="this.editor.update()" rows="6" cols="60">
-Type **Markdown** here.</textarea
-    >
+    <div id="cv-preview">
+      <div id="name-container"></div>
+      <div id="preview"></div>
+      <div id="preview1"></div>
+      <div id="preview2"></div>
+      <div id="preview3"></div>
+      <div id="preview4"></div>
+      <div id="preview5"></div>
+    </div>
   </body>
 </html>
