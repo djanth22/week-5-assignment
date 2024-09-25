@@ -18,7 +18,11 @@ var $ = function (id) {
   return document.getElementById(id);
 };
 new Editor($("text-input"), $("preview"));
-
+new Editor($("text-input1"), $("preview1"));
+new Editor($("text-input2"), $("preview2"));
+new Editor($("text-input3"), $("preview3"));
+new Editor($("text-input4"), $("preview4"));
+new Editor($("text-input5"), $("preview5"));
 // const markdownTest = document.createElement("p");
 // markdownTest.innerHTML = "Hello *World*!";
 // document.body.appendChild(markdownTest);
