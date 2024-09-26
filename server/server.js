@@ -22,7 +22,7 @@ app.get("/", function (req, res) {
   res.json({ message: "this is the root route" });
 });
 
-app.post("/add", async function (req, res) {
+app.post("/check", async function (req, res) {
   const queryResponse = await db.query(
     "SELECT * FROM sign_in WHERE user_email= $1 AND user_password = $2",
     [req.body.formValues.your_name, req.body.formValues.your_pass]
