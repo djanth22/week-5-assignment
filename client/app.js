@@ -54,7 +54,9 @@ function cheatsheet() {
 
 //Get the feedback data from the read-data endpoint (Hanifah)
 async function getFeedback() {
-  const response = await fetch("http://localhost:8080/read-data");
+  const response = await fetch(
+    "https://week-5-cvtemplate.onrender.com/read-data"
+  );
   // console.log(response);
   const feedback = await response.json();
   // console.log(upgrades);
@@ -111,7 +113,7 @@ async function cvSumbit(event) {
   const formValues = Object.fromEntries(formData);
   console.log(formValues);
 
-  await fetch("http://localhost:8080/addcv", {
+  await fetch("https://week-5-cvtemplate.onrender.com/addcv", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -129,7 +131,7 @@ async function handleSubmit(event) {
   console.table(formValues);
   console.log(formValues);
 
-  const msgRes = await fetch("http://localhost:8080/add", {
+  const msgRes = await fetch("https://week-5-cvtemplate.onrender.com/add", {
     method: "POST", // This is where we set the POST HTTP verb
     headers: {
       "Content-Type": "application/json", // This tells the server we're sending stringified JSON data
@@ -179,7 +181,7 @@ async function submitSignUp(event) {
   // console.log(formData);
   const formValues = Object.fromEntries(formData);
   console.table(formValues);
-  const queres = await fetch("http://localhost:8080/addData", {
+  const queres = await fetch("https://week-5-cvtemplate.onrender.com/addData", {
     method: "POST", // This is where we set the POST HTTP verb
     headers: {
       "Content-Type": "application/json", // This tells the server we're sending stringified JSON data
@@ -187,11 +189,10 @@ async function submitSignUp(event) {
     body: JSON.stringify({ formValues }),
   });
   signUp.reset();
-};
+}
 signUp.addEventListener("submit", submitSignUp);
 
 //Trying to updat preview
 document
   .getElementById("personalsummary")
   .addEventListener("input", updatePreviews);
-
