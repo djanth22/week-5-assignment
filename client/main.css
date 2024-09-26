@@ -4,6 +4,39 @@ body {
 
 .header {
   text-align: center;
+  font-size: large;
+}
+
+.cheatsheet-content {
+  display: none;
+  text-align: left;
+  font-size: 19px;
+}
+
+.cheatsheet-button {
+  color: rgb(0, 0, 0);
+  font-weight: 700;
+  background-color: rgb(255, 118, 225);
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 30px 10px #ff00aa50;
+}
+
+.cheatsheet-container {
+  background-color: rgb(100, 21, 83);
+  padding: 30px;
+  border-radius: 20px;
+  border: 5px, black, solid;
+  box-shadow: 0px 0px 5px 5px #0000001a;
+}
+
+.cs-info {
+  text-shadow: 0 0 5px #ff4c90, 0 0 10px #ff73a9, 0 0 20px #ff2e7e;
+  color: rgb(255, 255, 255);
+  background-color: #66003050;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0px 0px 50px 10px #ff00aa30;
 }
 
 #hide-show,
@@ -29,6 +62,7 @@ body {
   background-color: blue;
   padding: 5px;
   border-radius: 20px;
+  box-shadow: 2px 2px 2px 2px #0000001a;
 }
 
 #cv-form {
