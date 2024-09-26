@@ -66,6 +66,7 @@ const loginform = document.querySelector("#login-form");
 let email = undefined;
 async function showData() {
   const cvData = await getFeedback();
+  let index = cvData.findIndex((x) => x.useremail === email);
   const userEmail = document.querySelector("#user-email");
   const firstName = document.querySelector("#first-name");
   const lastName = document.querySelector("#last-name");
@@ -79,14 +80,16 @@ async function showData() {
   // const msgCheker = document.querySelector("#login_massage");
 
   // const email = "ayinkxafinowi@gmail.com";
-  let index;
-  for (let i = 0; i++; i < cvData.length) {
-    console.log(cvData[i].useremail);
-    if (cvData[i].useremail === email.your_name) {
-      return (index = i);
-    }
-  }
-  console.log(email.your_name);
+
+  //Using Array.findIndex()
+
+  // for (let i = 0; i++; i < cvData.length) {
+  //   console.log(cvData[i].useremail);
+  //   if (cvData[i].useremail == email) {
+  //     index = indexOf(cvData[i]);
+  //   }
+  // }
+  console.log(email);
   console.log(cvData[0].useremail);
   console.log(index);
 
@@ -122,9 +125,10 @@ async function handleSubmit(event) {
 
   const formData = new FormData(loginform);
   const formValues = Object.fromEntries(formData);
-  email = formValues;
+  email = formValues.your_name;
   console.table(formValues);
   console.log(formValues);
+
   const msgRes = await fetch("http://localhost:8080/add", {
     method: "POST", // This is where we set the POST HTTP verb
     headers: {
@@ -161,6 +165,7 @@ function updatePreviews() {
     document.getElementById("personalsummary").value
   );
 }
+
 updatePreviews();
 
 // signup form
@@ -184,3 +189,9 @@ async function submitSignUp(event) {
   signUp.reset();
 };
 signUp.addEventListener("submit", submitSignUp);
+
+//Trying to updat preview
+document
+  .getElementById("personalsummary")
+  .addEventListener("input", updatePreviews);
+
