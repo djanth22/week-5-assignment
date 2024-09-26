@@ -61,39 +61,54 @@ async function getFeedback() {
 
   return feedback;
 }
-
+const loginform = document.querySelector("#login-form");
 //Show the data collected from the database if the user exists  (Hanifah)
+let email = undefined;
 async function showData() {
+  const cvData = await getFeedback();
+  const userEmail = document.querySelector("#user-email");
+  const firstName = document.querySelector("#first-name");
+  const lastName = document.querySelector("#last-name");
   const personalsummary = document.querySelector("#personalsummary");
   const mainsection = document.querySelector("#mainsection");
   const education = document.querySelector("#education");
   const socials = document.querySelector("#socials");
   const skills = document.querySelector("#skills");
   const projects = document.querySelector("#projects");
-  const cvData = await getFeedback();
-  const index = undefined;
 
-  for (i = 0; i++; i < cvData.length) {
-    if (cvData.username == cvData) {
-      index = i;
+  // const msgCheker = document.querySelector("#login_massage");
+
+  // const email = "ayinkxafinowi@gmail.com";
+  let index;
+  for (let i = 0; i++; i < cvData.length) {
+    console.log(cvData[i].useremail);
+    if (cvData[i].useremail === email.your_name) {
+      return (index = i);
     }
   }
-  personalsummary.textContent = cvData[index].personalsummary;
-  mainsection.textContent = cvData[index].mainsection;
-  education.textContent = cvData[index].education;
-  socials.textContent = cvData[index].socials;
-  skills.textContent = cvData[index].skills;
-  projects.textContent = cvData[index].projects;
+  console.log(email.your_name);
+  console.log(cvData[0].useremail);
+  console.log(index);
+
+  firstName.value = cvData[index].firstname;
+  userEmail.value = cvData[index].useremail;
+  lastName.value = cvData[index].lastname;
+  personalsummary.value = cvData[index].personalsummary;
+  mainsection.value = cvData[index].mainsection;
+  education.value = cvData[index].education;
+  socials.value = cvData[index].linkstosocials;
+  skills.value = cvData[index].skills;
+  projects.value = cvData[index].projects;
 }
 const cvForm = document.getElementById("cv-form");
 //When you click submit on the cv-form
-function cvSumbit(event) {
+async function cvSumbit(event) {
   event.preventDefault();
-  const formData = new FormData(guestbookForm);
+  const formData = new FormData(cvForm);
   const formValues = Object.fromEntries(formData);
   console.log(formValues);
 
-  fetch("http://localhost:8080//add", {
+  await fetch("http://localhost:8080/addcv", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -102,14 +117,14 @@ function cvSumbit(event) {
   });
 }
 
-const loginform = document.querySelector("#login-form");
 async function handleSubmit(event) {
   event.preventDefault();
 
   const formData = new FormData(loginform);
   const formValues = Object.fromEntries(formData);
+  email = formValues;
   console.table(formValues);
-
+  console.log(formValues);
   const msgRes = await fetch("http://localhost:8080/add", {
     method: "POST", // This is where we set the POST HTTP verb
     headers: {
@@ -126,6 +141,7 @@ async function handleSubmit(event) {
     h1.id = "login_massage";
     h1.textContent = msg.massage;
     form.appendChild(h1);
+    showData();
   } else {
     msgCheker.textContent = msg.massage;
   }
@@ -137,3 +153,12 @@ async function handleSubmit(event) {
 loginform.addEventListener("submit", handleSubmit);
 toggle.addEventListener("click", reveal);
 csButton.addEventListener("click", cheatsheet);
+cvForm.addEventListener("submit", cvSumbit);
+
+//Update Preview
+function updatePreviews() {
+  document.getElementById("preview").innerHTML = markdown.toHTML(
+    document.getElementById("personalsummary").value
+  );
+}
+updatePreviews();

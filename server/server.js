@@ -22,10 +22,12 @@ app.get("/", function (req, res) {
   res.json({ message: "this is the root route" });
 });
 
-app.post("/check", async function (req, res) {
+app.post("/add", async function (req, res) {
   const queryResponse = await db.query(
-    "SELECT * FROM sign_in WHERE user_email= $1 AND user_password = $2",
-    [req.body.formValues.your_name, req.body.formValues.your_pass]
+    // "SELECT * FROM cv WHERE user_email= $1 AND user_password = $2",
+    // [req.body.formValues.your_name, req.body.formValues.your_pass]
+    "SELECT * FROM cv WHERE useremail= $1",
+    [req.body.formValues.your_name]
   );
 
   console.log(queryResponse.rowCount);
@@ -36,4 +38,40 @@ app.post("/check", async function (req, res) {
     console.log("error");
     res.json({ massage: "Invalid Login" });
   }
+});
+
+app.get("/read-data", async (request, response) => {
+  const query = await db.query(`SELECT * FROM cv`);
+  response.json(query.rows);
+  console.log(query);
+});
+
+app.post("/addcv", function (req, res) {
+  const bodyData = req.body;
+  console.log(bodyData);
+  res.json({
+    message: "Body data received",
+  });
+  db.query(
+    `INSERT INTO cv(firstname,
+lastname,
+personalsummary,
+mainsection,
+education,
+linkstosocials,
+skills,
+projects,
+useremail) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9);`,
+    [
+      `${bodyData.formValues.firstname}`,
+      `${bodyData.formValues.lastname}`,
+      `${bodyData.formValues.personalsummary}`,
+      `${bodyData.formValues.mainsection}`,
+      `${bodyData.formValues.education}`,
+      `${bodyData.formValues.socials}`,
+      `${bodyData.formValues.skills}`,
+      `${bodyData.formValues.projects}`,
+      `${bodyData.formValues.email}`,
+    ]
+  );
 });
