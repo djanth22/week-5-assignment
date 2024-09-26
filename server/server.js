@@ -10,7 +10,7 @@ app.use(cors());
 
 dotenv.config();
 export const db = new pg.Pool({
-  connectionString: process.env.Database_URL
+  connectionString: process.env.DATABASE_URL,
 });
 
 const PORT = 8080;
@@ -21,7 +21,6 @@ app.listen(PORT, function () {
 app.get("/", function (req, res) {
   res.json({ message: "this is the root route" });
 });
-
 
 app.post("/add", async function (req, res) {
   const queryResponse = await db.query(
@@ -40,7 +39,6 @@ app.post("/add", async function (req, res) {
     res.json({ massage: "Invalid Login" });
   }
 });
-
 
 app.get("/read-data", async (request, response) => {
   const query = await db.query(`SELECT * FROM cv`);
@@ -79,8 +77,9 @@ useremail) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9);`,
 });
 
 // signup form add data
-app.post("/addData", function(req,res){
+app.post("/addData", function (req, res) {
   console.log(req.body);
-  db.query(`INSERT INTO cv (useremail) VALUES ($1)`,
-        [req.body.formValues.email]);
+  db.query(`INSERT INTO cv (useremail) VALUES ($1)`, [
+    req.body.formValues.email,
+  ]);
 });
