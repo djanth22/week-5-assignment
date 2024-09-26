@@ -140,7 +140,7 @@ async function handleSubmit(event) {
     const h1 = document.createElement("h1");
     h1.id = "login_massage";
     h1.textContent = msg.massage;
-    form.appendChild(h1);
+    loginform.appendChild(h1);
     showData();
   } else {
     msgCheker.textContent = msg.massage;
@@ -162,3 +162,25 @@ function updatePreviews() {
   );
 }
 updatePreviews();
+
+// signup form
+
+const signUp = document.querySelector("#register-form");
+// console.log(signUp);
+async function submitSignUp(event) {
+  event.preventDefault();
+
+  const formData = new FormData(signUp);
+  // console.log(formData);
+  const formValues = Object.fromEntries(formData);
+  console.table(formValues);
+  const queres = await fetch("http://localhost:8080/addData", {
+    method: "POST", // This is where we set the POST HTTP verb
+    headers: {
+      "Content-Type": "application/json", // This tells the server we're sending stringified JSON data
+    },
+    body: JSON.stringify({ formValues }),
+  });
+  signUp.reset();
+};
+signUp.addEventListener("submit", submitSignUp);
