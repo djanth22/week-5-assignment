@@ -52,7 +52,6 @@ function cheatsheet() {
   }
 }
 
-
 //Get the feedback data from the read-data endpoint (Hanifah)
 async function getFeedback() {
   const response = await fetch("http://localhost:8080/read-data");
@@ -131,14 +130,10 @@ async function handleSubmit(event) {
     msgCheker.textContent = msg.massage;
   }
 
-  form.reset();
+  loginform.reset();
 }
 
 //Event Listeners
-form.addEventListener("submit", handleSubmit);
+loginform.addEventListener("submit", handleSubmit);
 toggle.addEventListener("click", reveal);
 csButton.addEventListener("click", cheatsheet);
-
-
-
-
