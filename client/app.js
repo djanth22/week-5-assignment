@@ -1,12 +1,6 @@
-// fetch("localhost:8080/add", {
-//   method: "POST",
-//   headers: {
-//     "Content-Type": "application/json",
-//   },
-//   body: JSON.stringify({ formvalues }),
-// });
+//Importing Markdown package
 import { markdown } from "markdown";
-console.log(markdown.toHTML("Hello *World*!"));
+//Function copied from package documentation
 function Editor(input, preview) {
   this.update = function () {
     preview.innerHTML = markdown.toHTML(input.value);
@@ -17,16 +11,14 @@ function Editor(input, preview) {
 var $ = function (id) {
   return document.getElementById(id);
 };
-new Editor($("text-input"), $("preview"));
-new Editor($("text-input1"), $("preview1"));
-new Editor($("text-input2"), $("preview2"));
-new Editor($("text-input3"), $("preview3"));
-new Editor($("text-input4"), $("preview4"));
-new Editor($("text-input5"), $("preview5"));
-// const markdownTest = document.createElement("p");
-// markdownTest.innerHTML = "Hello *World*!";
-// document.body.appendChild(markdownTest);
+new Editor($("personalsummary"), $("preview"));
+new Editor($("mainsection"), $("preview1"));
+new Editor($("education"), $("preview2"));
+new Editor($("socials"), $("preview3"));
+new Editor($("skills"), $("preview4"));
+new Editor($("projects"), $("preview5"));
 
+//Reveal/Hide CV
 const form = document.getElementById(`form-container`);
 const toggle = document.getElementById(`hide-show`);
 let display = true;
@@ -43,7 +35,73 @@ function reveal() {
   }
 }
 
-toggle.addEventListener("click", reveal);
+//reveal/hide cheatsheet
+const cs = document.querySelector(`.cheatsheet-content`);
+const csButton = document.querySelector(`.cheatsheet-button`);
+let csdisplay = false;
+
+function cheatsheet() {
+  if (csdisplay == true) {
+    cs.style.display = "none";
+    csdisplay = false;
+    csButton.textContent = "show cheatsheet";
+  } else {
+    cs.style.display = "block";
+    csdisplay = true;
+    csButton.textContent = "hide cheatsheet";
+  }
+}
+
+
+//Get the feedback data from the read-data endpoint (Hanifah)
+async function getFeedback() {
+  const response = await fetch("http://localhost:8080/read-data");
+  // console.log(response);
+  const feedback = await response.json();
+  // console.log(upgrades);
+
+  return feedback;
+}
+
+//Show the data collected from the database if the user exists  (Hanifah)
+async function showData() {
+  const personalsummary = document.querySelector("#personalsummary");
+  const mainsection = document.querySelector("#mainsection");
+  const education = document.querySelector("#education");
+  const socials = document.querySelector("#socials");
+  const skills = document.querySelector("#skills");
+  const projects = document.querySelector("#projects");
+  const cvData = await getFeedback();
+  const index = undefined;
+
+  for (i = 0; i++; i < cvData.length) {
+    if (cvData.username == cvData) {
+      index = i;
+    }
+  }
+  personalsummary.textContent = cvData[index].personalsummary;
+  mainsection.textContent = cvData[index].mainsection;
+  education.textContent = cvData[index].education;
+  socials.textContent = cvData[index].socials;
+  skills.textContent = cvData[index].skills;
+  projects.textContent = cvData[index].projects;
+}
+const cvForm = document.getElementById("cv-form");
+//When you click submit on the cv-form
+function cvSumbit(event) {
+  event.preventDefault();
+  const formData = new FormData(guestbookForm);
+  const formValues = Object.fromEntries(formData);
+  console.log(formValues);
+
+  fetch("http://localhost:8080//add", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ formValues }),
+  });
+}
 
 const loginform = document.querySelector("#login-form");
 async function handleSubmit(event) {
@@ -75,38 +133,12 @@ async function handleSubmit(event) {
 
   form.reset();
 }
+
+//Event Listeners
 form.addEventListener("submit", handleSubmit);
-
-const cs = document.querySelector(`.cheatsheet-content`);
-const csButton = document.querySelector(`.cheatsheet-button`);
-let csdisplay = false;
-
-function cheatsheet() {
-  if (csdisplay == true) {
-    cs.style.display = "none";
-    csdisplay = false;
-    csButton.textContent = "show cheatsheet";
-  } else {
-    cs.style.display = "block";
-    csdisplay = true;
-    csButton.textContent = "hide cheatsheet";
-  }
-}
-
+toggle.addEventListener("click", reveal);
 csButton.addEventListener("click", cheatsheet);
 
-const blade = document.querySelector(`.blade`);
-const hilt = document.querySelector(`.hilt`);
-let extendRetract = true;
 
-function saber() {
-  if (extendRetract == true) {
-    blade.style.width = `550px`;
-    extendRetract = false;
-  } else {
-    blade.style.width = `0px`;
-    extendRetract = true;
-  }
-}
 
-hilt.addEventListener("click", saber);
+
