@@ -35,6 +35,24 @@ function reveal() {
   }
 }
 
+//reveal/hide cheatsheet
+const cs = document.querySelector(`.cheatsheet-content`);
+const csButton = document.querySelector(`.cheatsheet-button`);
+let csdisplay = false;
+
+function cheatsheet() {
+  if (csdisplay == true) {
+    cs.style.display = "none";
+    csdisplay = false;
+    csButton.textContent = "show cheatsheet";
+  } else {
+    cs.style.display = "block";
+    csdisplay = true;
+    csButton.textContent = "hide cheatsheet";
+  }
+}
+
+
 //Get the feedback data from the read-data endpoint (Hanifah)
 async function getFeedback() {
   const response = await fetch("http://localhost:8080/read-data");
@@ -119,4 +137,8 @@ async function handleSubmit(event) {
 //Event Listeners
 form.addEventListener("submit", handleSubmit);
 toggle.addEventListener("click", reveal);
-//cvForm.addEventListener("submit", cvSumbit)
+csButton.addEventListener("click", cheatsheet);
+
+
+
+
