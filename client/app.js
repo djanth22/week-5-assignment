@@ -27,11 +27,11 @@ function reveal() {
   if (display == true) {
     form.style.display = "none";
     display = false;
-    toggle.textContent = "show form";
+    toggle.textContent = "Show form";
   } else {
     form.style.display = "block";
     display = true;
-    toggle.textContent = "hide form";
+    toggle.textContent = "Hide form";
   }
 }
 
