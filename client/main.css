@@ -1,6 +1,6 @@
-body {
+/* body {
   background-color: aqua;
-}
+} */
 
 .header {
   text-align: center;
@@ -14,35 +14,35 @@ body {
 }
 
 .cheatsheet-button {
-  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
   font-weight: 700;
-  background-color: rgb(255, 118, 225);
+  background-color: rgb(119, 89, 113);
   padding: 10px;
   border-radius: 10px;
-  box-shadow: 0px 0px 30px 10px #ff00aa50;
+  box-shadow: 0px 0px 30px 10px #00000050;
 }
 
 .cheatsheet-container {
-  background-color: rgb(100, 21, 83);
+  background-color: rgba(100, 21, 83, 0.116);
   padding: 30px;
   border-radius: 20px;
-  border: 5px, black, solid;
+  border: 5px, rgba(0, 0, 0, 0.37), solid;
   box-shadow: 0px 0px 5px 5px #0000001a;
 }
 
 .cs-info {
-  text-shadow: 0 0 5px #ff4c90, 0 0 10px #ff73a9, 0 0 20px #ff2e7e;
-  color: rgb(255, 255, 255);
-  background-color: #66003050;
+  /* text-shadow: 0 0 5px #ff4c90, 0 0 10px #ff73a9, 0 0 20px #ff2e7e; */
+  color: rgb(0, 0, 0);
+  background-color: #6600300a;
   padding: 20px;
   border-radius: 20px;
-  box-shadow: 0px 0px 50px 10px #ff00aa30;
+  box-shadow: 0px 0px 50px 10px #00000030;
 }
 
 #hide-show,
 #submit-form {
-  color: rgb(51, 255, 0);
-  background-color: rgb(255, 0, 106);
+  color: rgb(255, 255, 255);
+  background-color: #058ef7;
   border-radius: 20px;
   padding: 8px;
   font-size: large;
@@ -51,15 +51,22 @@ body {
   margin-bottom: 10px;
 }
 
+#hide-show:hover,
+#submit-form:hover {
+  background: #024306;
+}
+
 .form-title {
   text-align: center;
-  background-color: aliceblue;
+  background-color: rgba(53, 133, 204, 0.308);
   border: 3px, black, solid;
+  border-radius: 30px;
+  margin: 5px;
 }
 
 #form-container {
   display: block;
-  background-color: blue;
+  background-color: #5a5a7a57;
   padding: 5px;
   border-radius: 20px;
   box-shadow: 2px 2px 2px 2px #0000001a;
@@ -94,13 +101,16 @@ textarea {
 label {
   padding-top: 5px;
   padding-bottom: 5px;
-  color: antiquewhite;
+  color: rgb(0, 0, 0);
+  font-size: 15px;
 }
 
 .label-text {
   align-self: center;
-  background-color: blueviolet;
-  width: 200px;
+  background-color: rgba(137, 43, 226, 0.103);
+  width: 300px;
   border-radius: 30px;
-  border: 3px, black, solid;
+  border: 3px, rgba(0, 0, 0, 0.288), solid;
+  margin: 5px;
+  box-shadow: 2px 2px 2px 2px #0000001a;
 }
